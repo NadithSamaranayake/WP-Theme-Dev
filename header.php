@@ -6,9 +6,9 @@
         <?php wp_head(); ?>
     </head>
 
-    <body>
+    <body <?php body_class(); ?> >
 
    <!--We don't need to close the body and the html tag because we are closing them in the footer file-->
 
-    <?php wp_nav_menu(array('theme_location'=>'primary')); ?>
-    <!--This will tell wordpress to print the menu-->
+        <?php wp_nav_menu(array('theme_location'=>'primary')); ?>
+        <!--This will tell wordpress to print the menu-->
