@@ -29,6 +29,8 @@ function theme01_theme_setup() {
     /*This hook is used to include the functions to enable the user to add and customize their menu sections*/
 
     register_nav_menu( 'primary', 'Primary Header Navigation');
+    register_nav_menu( 'secondary', 'Footer Navigation');
+
     /*
     first parameter is the theme location (the unique name of our menu)
     second parameter is the description of the menu
