@@ -12,7 +12,7 @@
         fifth parameter is the media parameter which specifies whether the file should be printed on all devices or
     just on a print device or just on a different resolution device
         */
-        wp_enqueue_script( 'customejs', get_template_directory_uri() . '/js/theme01.js', array(), '1.0.0', true);
+        wp_enqueue_script( 'customjs', get_template_directory_uri() . '/js/theme01.js', array(), '1.0.0', true);
         /*
         The first four parameters are the same as the first function.
         The fifth parameter inlcudes a boolean value which states where to add the js scripts.
