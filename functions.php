@@ -39,3 +39,8 @@ function theme01_theme_setup() {
 }
 
 add_action( 'init', 'theme01_theme_setup');
+
+add_theme_support('custom-background');
+add_theme_support('custom-header');
+add_theme_support('post-thumbnails');
+    /* This hook will allow you to add images to your blog posts. */
