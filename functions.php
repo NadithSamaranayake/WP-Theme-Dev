@@ -44,3 +44,10 @@ add_theme_support('custom-background');
 add_theme_support('custom-header');
 add_theme_support('post-thumbnails');
     /* This hook will allow you to add images to your blog posts. */
+
+add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
+    /* 
+        This code line is not enough because we should specify what post format we want to use
+        WordPress has 9 different post formats
+    */
+
