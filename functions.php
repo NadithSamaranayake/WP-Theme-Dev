@@ -2,6 +2,8 @@
 
     function theme01_script_enqueue(){
 
+        wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '5.3.2', 'all');
+
         wp_enqueue_style( 'customstyle', get_template_directory_uri() . '/css/theme01.css', array(), '1.0.0', 'all' );
         /*
         first parameter is what wordpress uses as the name for the style sheet
@@ -12,13 +14,20 @@
         fifth parameter is the media parameter which specifies whether the file should be printed on all devices or
     just on a print device or just on a different resolution device
         */
+
         wp_enqueue_script( 'customjs', get_template_directory_uri() . '/js/theme01.js', array(), '1.0.0', true);
+
+        wp_enqueue_script( 'bootstrapjs', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '5.3.2', true);
         /*
         The first four parameters are the same as the first function.
         The fifth parameter inlcudes a boolean value which states where to add the js scripts.
             if we state it as 'true' it'll be included in the footer
                 (including the js in the footer will improve the website speed and functionallities)
             by default it's false, which will print the js scripts in the header.
+        */
+        wp_enqueue_script('jquery');
+        /*
+            this code line will grap the native jquery file which was included when installing WordPress
         */
     }
 add_action( 'wp_enqueue_scripts', 'theme01_script_enqueue');
