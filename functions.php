@@ -60,3 +60,39 @@ add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', '
         WordPress has 9 different post formats
     */
 
+/*
+    ==================================
+    Sidebar function
+    ==================================
+*/
+function theme01_widget_setup() {
+
+    register_sidebar( 
+        array(
+            'name' => 'Sidebar',
+            'id' => 'sidebar-1',
+            'class' => 'custom',
+            'description' => 'Standard Sidebar',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => '</aside>',
+            'before_title' => '<h1 class="widget_title">',
+            'after_title' => '</h1>',
+        )
+        );
+
+        register_sidebar( 
+            array(
+                'name' => 'Sidebar 2',
+                'id' => 'sidebar-2',
+                'class' => 'custom2',
+                'description' => 'Standard Sidebar 2',
+                'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+                'after_widget' => '</aside>',
+                'before_title' => '<h1 class="widget_title">',
+                'after_title' => '</h1>',
+            )
+            );
+
+}
+
+add_action('widgets_init','theme01_widget_setup');
