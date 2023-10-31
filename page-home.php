@@ -45,9 +45,13 @@
         endif;
 
         //Print other 2 posts not the first one
+        $args = array(
+            'type' => 'post',
+            'posts_per_page' => 2,
+            'offset' => 1,
+        );
 
-
-        $lastBlog = new WP_Query('type=post&posts_per_page=1');
+        $lastBlog = new WP_Query($args);
 
         if ($lastBlog->have_posts()) :
 
@@ -60,6 +64,27 @@
         endif;
 
         wp_reset_postdata();
+        ?>
+
+        <hr>
+
+        <?php
+         //Print only tutorial posts
+        $lastBlog = new WP_Query('type=post&posts_per_page=-1&category_name=tutorials');
+            //the -1 in posts_per_page states that there is no limit of posts to be added.
+
+        if ($lastBlog->have_posts()) :
+
+            while ($lastBlog->have_posts()) : $lastBlog->the_post(); ?>
+
+        <?php get_template_part('content', get_post_format()); ?>
+
+        <?php endwhile;
+
+        endif;
+
+        wp_reset_postdata();
+
         ?>
 
 
