@@ -2,48 +2,62 @@
 
 <div class="row">
 
-    <div class="col-xs-12">
+    <?php
 
-        <?php
+        $args_cat = array(
+            'include' => '10,11,9'
+        );
 
-        $lastBlog = new WP_Query('type=post&posts_per_page=1');
+        $categories = get_categories( $args_cat );
+        foreach ($categories as $category):
+
+            $args = array(
+                'type' => 'post',
+                'posts_per_page' => 1,
+                'category__in' => $category->term_id,
+                'category__not_in' => array(10),
+            );
+
+            $lastBlog = new WP_Query($args);
 
         if ($lastBlog->have_posts()) :
 
             while ($lastBlog->have_posts()) : $lastBlog->the_post(); ?>
 
-        <?php get_template_part('content', get_post_format()); ?>
+    <div class="col-xs-12 col-sm-4">
+        <?php get_template_part('content', 'featured'); ?>
+        <!--
+                        In here we have removed the get_post_format(); parameter to add a custom page format that we created (featured)
+                    -->
+    </div>
 
-        <?php endwhile;
+    <?php endwhile;
 
         endif;
 
         wp_reset_postdata();
-        /*
-                This code is useful to prevent feature query posts being effected by earlier ones.
-                It's like clearing out the variable/ cleaning cache.
-            */
-        ?>
+    endforeach;
 
-    </div>
-
-    <div class="col-xs-12 col-sm-8">
-        <!--col-xs is phone size and col-sm is tablet size-->
-        <?php
+?>
+</div>
+<div class="col-xs-12 col-sm-8">
+    <!--col-xs is phone size and col-sm is tablet size-->
+    <?php
 
         if (have_posts()) :
 
             while (have_posts()) : the_post(); ?>
-        <!--
+    <!--
                     echo 'This is the format: ' . get_post_format();
                     This code line will print the current format of the post 
                 -->
-        <?php get_template_part('content', get_post_format()); ?>
+    <?php get_template_part('content', get_post_format()); ?>
 
-        <?php endwhile;
+    <?php endwhile;
 
         endif;
 
+    /*
         //Print other 2 posts not the first one
         $args = array(
             'type' => 'post',
@@ -57,18 +71,18 @@
 
             while ($lastBlog->have_posts()) : $lastBlog->the_post(); ?>
 
-        <?php get_template_part('content', get_post_format()); ?>
+    <?php get_template_part('content', get_post_format()); ?>
 
-        <?php endwhile;
+    <?php endwhile;
 
         endif;
 
         wp_reset_postdata();
         ?>
 
-        <hr>
+    <hr>
 
-        <?php
+    <?php
          //Print only tutorial posts
         $lastBlog = new WP_Query('type=post&posts_per_page=-1&category_name=tutorials');
             //the -1 in posts_per_page states that there is no limit of posts to be added.
@@ -77,23 +91,23 @@
 
             while ($lastBlog->have_posts()) : $lastBlog->the_post(); ?>
 
-        <?php get_template_part('content', get_post_format()); ?>
+    <?php get_template_part('content', get_post_format()); ?>
 
-        <?php endwhile;
+    <?php endwhile;
 
         endif;
 
         wp_reset_postdata();
-
+*/
         ?>
 
 
 
-    </div>
+</div>
 
-    <div class="col-xs-12 col-sm-4">
-        <?php get_sidebar(); ?>
-    </div>
+<div class="col-xs-12 col-sm-4">
+    <?php get_sidebar(); ?>
+</div>
 
 </div>
 
