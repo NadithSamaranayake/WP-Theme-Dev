@@ -1,10 +1,10 @@
 <?php
 
-    function theme01_script_enqueue(){
+    function theme01_script_enqueue()
+    {
+        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.4', 'all');
 
-        wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '5.3.2', 'all');
-
-        wp_enqueue_style( 'customstyle', get_template_directory_uri() . '/css/theme01.css', array(), '1.0.0', 'all' );
+        wp_enqueue_style('customstyle', get_template_directory_uri() . '/css/theme01.css', array(), '1.0.0', 'all');
         /*
         first parameter is what wordpress uses as the name for the style sheet
         second parameter is the location of the css file. (make sure to give the full uri location)
@@ -15,9 +15,14 @@
     just on a print device or just on a different resolution device
         */
 
-        wp_enqueue_script( 'customjs', get_template_directory_uri() . '/js/theme01.js', array(), '1.0.0', true);
+        wp_enqueue_script('jquery');
+        /*
+            this code line will grap the native jquery file which was included when installing WordPress
+        */
 
-        wp_enqueue_script( 'bootstrapjs', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '5.3.2', true);
+        wp_enqueue_script('bootstrapjs', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '3.3.4', true);
+
+        wp_enqueue_script('customjs', get_template_directory_uri() . '/js/theme01.js', array(), '1.0.0', true);
         /*
         The first four parameters are the same as the first function.
         The fifth parameter inlcudes a boolean value which states where to add the js scripts.
@@ -25,37 +30,33 @@
                 (including the js in the footer will improve the website speed and functionallities)
             by default it's false, which will print the js scripts in the header.
         */
-        wp_enqueue_script('jquery');
-        /*
-            this code line will grap the native jquery file which was included when installing WordPress
-        */
     }
-add_action( 'wp_enqueue_scripts', 'theme01_script_enqueue');
+add_action('wp_enqueue_scripts', 'theme01_script_enqueue');
 /*connects word press execution process to a custom function and tells to execute the function.*/
 
-function theme01_theme_setup() {
-    add_theme_support( 'menus');
+function theme01_theme_setup()
+{
+    add_theme_support('menus');
     /*This hook is used to include the functions to enable the user to add and customize their menu sections*/
 
-    register_nav_menu( 'primary', 'Primary Header Navigation');
-    register_nav_menu( 'secondary', 'Footer Navigation');
+    register_nav_menu('primary', 'Primary Header Navigation');
+    register_nav_menu('secondary', 'Footer Navigation');
 
     /*
     first parameter is the theme location (the unique name of our menu)
     second parameter is the description of the menu
     */
-
 }
 
-add_action( 'init', 'theme01_theme_setup');
+add_action('init', 'theme01_theme_setup');
 
 add_theme_support('custom-background');
 add_theme_support('custom-header');
 add_theme_support('post-thumbnails');
     /* This hook will allow you to add images to your blog posts. */
 
-add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
-    /* 
+add_theme_support('post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ));
+    /*
         This code line is not enough because we should specify what post format we want to use
         WordPress has 9 different post formats
     */
@@ -65,9 +66,9 @@ add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', '
     Sidebar function
     ==================================
 */
-function theme01_widget_setup() {
-
-    register_sidebar( 
+function theme01_widget_setup()
+{
+    register_sidebar(
         array(
             'name' => 'Sidebar',
             'id' => 'sidebar-1',
@@ -78,10 +79,10 @@ function theme01_widget_setup() {
             'before_title' => '<h1 class="widget_title">',
             'after_title' => '</h1>',
         )
-        );
+    );
 
-        register_sidebar( 
-            array(
+    register_sidebar(
+        array(
                 'name' => 'Sidebar 2',
                 'id' => 'sidebar-2',
                 'class' => 'custom2',
@@ -91,8 +92,7 @@ function theme01_widget_setup() {
                 'before_title' => '<h1 class="widget_title">',
                 'after_title' => '</h1>',
             )
-            );
-
+    );
 }
 
-add_action('widgets_init','theme01_widget_setup');
+add_action('widgets_init', 'theme01_widget_setup');
