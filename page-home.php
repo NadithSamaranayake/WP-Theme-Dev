@@ -39,7 +39,8 @@
 
                     while ($lastBlog->have_posts()) : $lastBlog->the_post(); ?>
 
-                <div class="item <?php if ($count == 0): echo 'active'; endif; ?>">
+                <div
+                    class="item <?php if ($count == 0): echo 'active'; endif; ?>">
                     <?php the_post_thumbnail('full'); ?>
                     <div class="carousel-caption">
                         <?php the_title(sprintf('<h1 class="entry-title"><a href="%s">', esc_url(get_permalink())), '</a></h1>'); ?>
@@ -115,56 +116,57 @@
 
                 endif;
 
-            /*
-                //Print other 2 posts not the first one
-                $args = array(
-                    'type' => 'post',
-                    'posts_per_page' => 2,
-                    'offset' => 1,
-                );
+                    /*
+                        //Print other 2 posts not the first one
+                        $args = array(
+                            'type' => 'post',
+                            'posts_per_page' => 2,
+                            'offset' => 1,
+                        );
 
-                $lastBlog = new WP_Query($args);
+                        $lastBlog = new WP_Query($args);
 
-                if ($lastBlog->have_posts()) :
+                        if ($lastBlog->have_posts()) :
 
-                    while ($lastBlog->have_posts()) : $lastBlog->the_post(); ?>
+                            while ($lastBlog->have_posts()) : $lastBlog->the_post(); ?>
 
         <?php get_template_part('content', get_post_format()); ?>
 
         <?php endwhile;
 
-                endif;
+                                        endif;
 
-                wp_reset_postdata();
-                ?>
+                                        wp_reset_postdata();
+                                        */
+                                        ?>
 
-        <hr>
+        <!--<hr>-->
 
         <?php
-                //Print only tutorial posts
-                $lastBlog = new WP_Query('type=post&posts_per_page=-1&category_name=tutorials');
-                    //the -1 in posts_per_page states that there is no limit of posts to be added.
+                        /*
+                                        //Print only tutorial posts
+                                        $lastBlog = new WP_Query('type=post&posts_per_page=-1&category_name=tutorials');
+                                            //the -1 in posts_per_page states that there is no limit of posts to be added.
 
-                if ($lastBlog->have_posts()) :
+                                        if ($lastBlog->have_posts()) :
 
-                    while ($lastBlog->have_posts()) : $lastBlog->the_post(); ?>
+                                            while ($lastBlog->have_posts()) : $lastBlog->the_post(); ?>
 
         <?php get_template_part('content', get_post_format()); ?>
 
         <?php endwhile;
 
-                endif;
+                                        endif;
 
-                wp_reset_postdata();
-        */
+                                        wp_reset_postdata();
+                                */
                 ?>
+
     </div>
 
-</div>
-
-<div class="col-xs-12 col-sm-4">
-    <?php get_sidebar(); ?>
-</div>
+    <div class="col-xs-12 col-sm-4">
+        <?php get_sidebar(); ?>
+    </div>
 
 </div>
 

@@ -1,3 +1,8 @@
+<!--
+    This is not being used because we have to get the column variable from the index.php file and we'll have to set
+    the variable to global.
+-->
+
 <div class="col-xs-<?php echo $column; ?>">
     <?php if (has_post_thumbnail()): ?>
 

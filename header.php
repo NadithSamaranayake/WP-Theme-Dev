@@ -9,7 +9,7 @@
 
 <?php
         
-        if( is_front_page() ):
+        if (is_front_page()):
         /* This function checks whether we are currently in the home page. */
             $awesome_classes = array('awesome-class', 'my-class');
         else:
@@ -42,13 +42,14 @@
                             <a class="navbar-brand" href="#">Theme 01</a>
                         </div>
 
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">|I
-                            <?php wp_nav_menu(array(
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <?php wp_nav_menu(
+        array(
                                 'theme_location'=> 'primary',
                                 'container'=> false,
                                 'menu_class'=> 'nav navbar-nav navbar-right'
                                     )
-                                );
+    );
                             ?>
                         </div>
 
@@ -65,5 +66,7 @@
 
         </div>
 
-        <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>"
-            width="<?php echo get_custom_header()->width; ?>" alt="" />
+        <img src="<?php header_image(); ?>"
+            height="<?php echo get_custom_header()->height; ?>"
+            width="<?php echo get_custom_header()->width; ?>"
+            alt="" />

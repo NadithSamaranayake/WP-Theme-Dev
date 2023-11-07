@@ -17,7 +17,7 @@
 
         wp_enqueue_script('jquery');
         /*
-            this code line will grap the native jquery file which was included when installing WordPress
+            this code line will grab the native jquery file which was included when installing WordPress
         */
 
         wp_enqueue_script('bootstrapjs', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '3.3.4', true);
@@ -31,6 +31,7 @@
             by default it's false, which will print the js scripts in the header.
         */
     }
+    
 add_action('wp_enqueue_scripts', 'theme01_script_enqueue');
 /*connects word press execution process to a custom function and tells to execute the function.*/
 
